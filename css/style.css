@@ -1,0 +1,201 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body{
+  background: url(../img/bgImage.jpg) no-repeat;
+  background-size: cover;
+}
+.loginBox .zhu_ce{
+  font-weight:300;
+  color:grey!important;
+}
+/*左侧导航*/
+.nav_left{
+  margin-top: 50px;
+}
+/*意见栏提交*/
+.yjl{
+  text-align: center;
+}
+.yjl button{
+  padding:3px 12px;
+  background: #5CB85C;
+  margin-top:8px;
+  border:none;
+  color: white;
+  /*cursor: pointer;*/
+}
+// highcharts图表
+.hchart{
+  margin-top:65px;
+}
+// 关于我们
+.aboutus{
+   text-align: center;
+}
+.aboutus img{
+  display: block;
+  margin:10px auto;
+}
+.aboutus a:first-child img{
+  margin-top:65px;
+}
+//练习我们
+.links li{
+   border: 1px solid #ccc!important;
+}
+.links li:hover>a{
+  color:green;
+  background: pink;
+}
+.loginBox button{
+  width: 80px;
+}
+.formBox{
+  position:absolute;
+  padding: 0 50px 10px;
+  top: 50%;
+  left:33%;
+  margin-top:-150px;
+  text-align: center;
+  background:#f9f9f9;
+  border-radius: 6px;
+  /*height:260px;*/
+}
+.leftNav{
+  line-height: 50px;
+  text-align: center;
+  font-size: 12px;
+}
+.leftNav li{
+  list-style: none;
+  border-bottom:1px solid #eee;
+}
+.subNav li{
+  height: 30px;
+  line-height: 30px;
+}
+.subNav li a{
+  color: #777;
+}
+.leftNav .active{
+  background-color: #E7E7E7;
+}
+#tableBox{
+  font-size: 12px;
+}
+#tableBox td{
+  margin: 0;
+  padding: 5px;
+}
+#center th{
+  text-align: center;
+}
+#navBottom li{
+  border: 1px solid #ddd;
+  margin-right: 20px;
+  border-radius: 8px;
+  background-color: #e7e7e7;
+}
+#submitInfo{
+  display: inline-block;
+  width: 100px;
+    height: 36px;
+    background: #449d44;
+    opacity: 1;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: normal;
+}
+
+#navbarRight{
+  background: url(../img/link.png) #fff no-repeat;
+  background-size:contain;
+  font-size: 16px;
+}
+#navbarRight2{
+  background: url(../img/custom.png) #fff no-repeat;
+  background-size: contain;
+  font-size: 16px;
+}
+#navbarRight ul li{
+  padding-left: 20px;
+  line-height: 40px;
+  list-style: none;
+  border-bottom: 1px solid #f7f7f7;
+  font-size: 14px;
+}
+#navbarRight ul li a{
+  color: #444;
+}
+#navbarRight ul li:hover a{
+  color: green;
+}
+#tip{
+  font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .leftNav{
+    font-size: 13px;
+  }
+  #tableBox{
+    font-size: 13px;
+  }
+  #tip{
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .leftNav{
+    font-size: 14px;
+  }
+  #tableBox{
+    font-size: 14px;
+  }
+  #tip{
+    font-size: 25px;
+  }
+}
+footer{
+    text-align: center;
+}
+footer .p1{
+  font-size: 15px;
+  color:green;
+  font-weight: 700;
+}
+footer .p2{
+  font-size: 13px;
+}
+footer .p4 span{
+  display:inline-block;
+  background: url(../img/icons.png) no-repeat;
+}
+footer .p4 span:nth-child(1){
+ height:29px;
+ width:121px;
+ /*border: 1px solid #000;*/
+ background-position:0 -198px;
+}
+footer .p4 span:nth-child(2){
+ height:48px;
+ width:37px;
+ background-position:0 -23px;
+ background-size: 42px auto;
+}
+footer .p4 span:nth-child(3){
+height:47px;
+width:47px;
+background-position:0 -20px;
+}
+footer .p4 span:nth-child(4){
+height:20px;
+width:20px;
+background-position:0 0;
+}

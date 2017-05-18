@@ -1,0 +1,44 @@
+<div class=" navbar navbar-default " id="navbarRight">
+  <p style="line-height:48px;padding-left:20px;color:#fff;font-weight:bold">快速链接</p>
+  <ul class="links">
+    <li ng-repeat="item in urlBox"><a ng-href="{{item.url}}">{{item.name}}</a></li>
+  </ul>
+</div>
+<div class=" navbar navbar-default " id="navbarRight2">
+  <form name="yijian" ng-submit="submitData()">
+    <p style="line-height:43px;padding-left:20px;color:#fff;font-weight:bold">您的建议</p>
+    <p class="yjl" style="padding:20px;">
+      <input 
+      type="text"
+      class="form-control"
+      placeholder="您的姓名"
+      style="margin-bottom:15px;"
+      name="xinxi_userName"
+      ng-required="true"
+      ng-model="xinxi.username"
+      >
+      <input type="address" class="form-control" placeholder="您的地址" style="margin-bottom:15px;">
+      <input 
+      type="email"
+      class="form-control" 
+      placeholder="邮箱" 
+      style="margin-bottom:15px;"
+      name="xinxi_email"
+      ng-required="true"
+      ng-model="xinxi.email"
+      ng-pattern="/^[a-zA-Z]+.*\d+@[a-zA-Z]+.*\d+.(com|cn|net)$|^\d+.*[a-zA-Z]+@\d+.*[a-zA-Z]+.(com|cn|net)$/"
+      >
+      <textarea 
+      cols="30" 
+      rows="5" 
+      class="form-control" 
+      placeholder="请亲写出宝贵的建议"
+      ng-required="true"
+      name="xinxi_suggestion"
+      ng-model="xinxi.view"
+      ></textarea>
+      <span ng-show="yijian.xinxi_email.$dirty && yijian.xinxi_email.$invalid" class="text-danger">您输入的邮箱不正确，请重新输入</span>
+      <button type="submit" ng-disabled="yijian.$invalid">提交</button>
+    </p>
+  </form>
+</div> 

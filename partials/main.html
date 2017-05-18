@@ -1,0 +1,151 @@
+<div class="row" ng-app="main-ctrl" style="margin-top:60px">
+  <div class="col-xs-3 col-lg-2 nav_left">
+    <nav class="navbar navbar-default">
+      <ul class="leftNav"">
+        <li class="info"><a href="" ng-click="showAll()">全部商品</a></li>
+        <li class="info" ng-repeat="item in navList">
+          <a href="" class="default" data-toggle="collapse" data-target="#navLeft{{$index}}" data-index="{{$index}}" ng-click="changeBig($event)" >{{item.name}}</a>
+          <div id="navLeft{{$index}}" class="collapse out subNav">
+            <ul class="navbar-collapse">
+              <li ng-repeat="subList in item.sonMenu"><a href="" ng-click="changeSub($event)" href="" data-index="{{$index}}">{{subList}}</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col-xs-9 col-lg-7">
+    <div>
+
+      <div class="row">
+        <div class="col-sm-5 hidden-xs">
+          <button class="btn btn-success" style="width:100px;" data-toggle="modal" data-target="#myModal" >新增商品</button>
+          <button class="btn btn-danger" style="width:100px;" ng-click="delete()">删除商品</button>
+          <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                  </button>
+                  <h3 class="modal-title" style="text-align: center;">请输入你要添加的商品信息</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <form role="form">
+                        <div class="form-group">
+                          <label for="goodName">商品名称</label>
+                          <input type="text" ng-model="newGood.ProductName" class="form-control" placeholder="请输入要添加的商品名称">
+                        </div>
+                        <div class="form-group">
+                          <label for="goodPrice">商品图片</label>
+                          <input type="text" ng-model="newGood.ProductImage" class="form-control" placeholder="请输入要添加的商品图片地址">
+                        </div>
+                        <div class="form-group">
+                          <label for="goodNum">商品库存</label>
+                          <input type="text" ng-model="newGood.ProductSaleCount" class="form-control" placeholder="请输入要添加的商品库存">
+                        </div>
+                        <div class="form-group">
+                          <label for="goodPrice">商品价格</label>
+                          <input type="text" ng-model="newGood.ProductSalePrice" class="form-control" placeholder="请输入要添加的商品价格">
+                        </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="close" id="submitInfo" data-dismiss="modal" ng-click="addNew()">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="search" ng-change="changeSearch()" placeholder="请输入你想搜索的信息">
+            <span class="input-group-btn">
+              <button class="btn btn-default " type="button">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="" style="margin-top:20px;text-align:center;line-height:40px" id="tableBox">
+      <table class="table table-bordered" style="background:#fff">
+        <tr id="center">
+          <th>
+            全选<input type="checkbox" ng-model="checkAll" ng-click="updateAll()">
+          </th>
+          <th>商品图片</th>
+          <th>商品名称</th>
+          <th>商品价格</th>
+          <th>商品数量</th>
+          <th>操作</th>
+        </tr>
+        <tr class="active" ng-repeat="item in showGoodList | filter:search">
+          <td>
+            <input type="checkbox" ng-checked="isSelected(item._id)" ng-click="updateSelection($event,item._id)">
+          </td>
+          <td>
+            <img ng-src="{{item.ProductImage}}" style="width:30px;height:30px">
+          </td>
+          <td>{{item.ProductName}}</td>
+          <td>{{item.ProductSalePrice}}</td>
+          <td>{{item.ProductSaleCount}}</td>
+          <td><button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModalModify" data-id="{{item._id}}" ng-click="getModify($event)">编辑</button></td>
+        </tr>
+      </table>
+    </div>
+    <nav class="navbar-right" style="padding:0;margin:-25px 0 0 0;">
+      <ul class="pagination">
+        <li><a href="" ng-click="prev()">&laquo;</a></li>
+        <li><a href="" ng-repeat="n in range(1,afterFilter.length/pageSize)" ng-click="changePage($index)">{{n}}</a></li>
+        <li><a href="" ng-click="next()">&raquo;</a></li>
+      </ul>
+    </nav>
+    <div class="modal fade" id="myModalModify">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+            <h3 class="modal-title" style="text-align: center;">请输入你要修改的商品信息</h3>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <form role="form">
+                  <div class="form-group">
+                    <label for="goodName">商品名称</label>
+                    <input type="text" ng-model="modifyInfo.ProductName" class="form-control" placeholder="请输入要修改的商品名称" ng-model="modifyInfo.ProductName">
+                  </div>
+                  <div class="form-group">
+                    <label for="goodPic">商品图片</label>
+                    <input type="text" ng-model="modifyInfo.ProductImage" class="form-control" placeholder="请输入要修改的商品图片">
+                  </div>
+                  <div class="form-group">
+                    <label for="goodNum">商品库存</label>
+                    <input type="text" ng-model="modifyInfo.ProductSaleCount" class="form-control" placeholder="请输入要修改的商品库存" ng-model="modifyInfo.ProductSaleCount">
+                  </div>
+                  <div class="form-group">
+                    <label for="goodPrice">商品价格</label>
+                    <input type="text" ng-model="modifyInfo.ProductSalePrice" class="form-control" placeholder="请输入要修改的商品价格" ng-model="modifyInfo.ProductSalePrice">
+                  </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="close" id="submitInfo" data-dismiss="modal" ng-click="modifyNew()">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 hidden-md hidden-xs hidden-sm">
+    <right-info></right-info>
+  </div>
+</div>
